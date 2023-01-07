@@ -1,3 +1,11 @@
+function addAndHandle(n1: number, n2: number, cb: (num: number) => void) {
+  const result = n1 + n2;
+  cb(result);
+}
+
+addAndHandle(1, 2, (num) => {
+  console.log(num);
+});
 // const person: {
 //   name: string;
 //   age: number;
@@ -19,15 +27,15 @@
 // const READ_ONLY = 1;
 // const AUTHOR = 2;
 
-enum Role {
-  ADMIN,
-  READ_ONLY,
-  AUTHOR,
-}
+// enum Role {
+//   ADMIN,
+//   READ_ONLY,
+//   AUTHOR,
+// }
 
-const person = {
-  name: 'Christopher',
-  age: 28,
-  hobbies: ['Sports', 'Cooking'],
-  role: Role.ADMIN,
-};
+// const person = {
+//   name: 'Christopher',
+//   age: 28,
+//   hobbies: ['Sports', 'Cooking'],
+//   role: Role.ADMIN,
+// };
