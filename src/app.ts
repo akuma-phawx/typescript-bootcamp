@@ -34,6 +34,7 @@ class ITDepartment extends Department {
 
 class AccountingDepartment extends Department {
   private lastReport: string;
+  private static instance: AccountingDepartment;
 
   get theLastReport() {
     if (this.lastReport) {
@@ -46,11 +47,18 @@ class AccountingDepartment extends Department {
     this.addReport(value);
   }
 
-  constructor(id: string, private reports: string[]) {
+  private constructor(id: string, private reports: string[]) {
     super(id, 'Accounting Department');
     this.lastReport = reports[0];
   }
 
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    }
+    this.instance = new AccountingDepartment('d2', []);
+    return this.instance;
+  }
   addEmployee(name: string) {
     if (name === 'Max') {
       return;
@@ -80,7 +88,7 @@ it.describe();
 // it.printEmployeeInformation();
 // console.log(it);
 
-const accounting = new AccountingDepartment('d2', []);
+const accounting = AccountingDepartment.getInstance();
 // accounting.theLastReport = 'The tEST';
 // console.log(accounting.theLastReport);
 
